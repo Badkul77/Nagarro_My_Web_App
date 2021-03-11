@@ -45,7 +45,7 @@ return ss;
     	int  year  = Integer.parseInt(dateParts[0]);
     	int month  = Integer.parseInt(dateParts[1]);
     	int day = Integer.parseInt(dateParts[2]);
-// find age function
+
     	mv.addObject("result",findAge(day, month, year, a, b, c));
     	mv.setViewName("add-result");
     	return mv;
