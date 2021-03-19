@@ -11,13 +11,13 @@ pipeline {
          steps {
             // Get some code from a GitHub repository 
             git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'
-            sh "mvn clean compile"
+            bat"mvn clean compile"
          }
          }
       stage("Test") {
           steps {
             git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'  
-            sh "mvn  clean test"
+            bat "mvn  clean test"
             
           }
 
@@ -25,7 +25,7 @@ pipeline {
       stage("Deploy") {
           steps {
             git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'  
-            sh "mvn  clean install"
+            bat "mvn  clean install"
             
           }
           post {
