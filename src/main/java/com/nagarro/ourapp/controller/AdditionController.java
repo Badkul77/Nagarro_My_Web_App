@@ -32,21 +32,22 @@ int calculated_year = current_year - birth_year;
 String ss="You are "+calculated_year+" Year "+calculated_month+" months and "+calculated_date+" days Old";
 return ss;
 } 
-	@RequestMapping(value="/add")
+	
+	 @RequestMapping(value="/add")
     public ModelAndView getAdditionResult(HttpServletRequest request,HttpServletResponse response)
     {
     	ModelAndView mv=new ModelAndView();
-    	int a= Integer.parseInt(request.getParameter("t1"));
-    	int b= Integer.parseInt(request.getParameter("t2"));
-    	int c= Integer.parseInt(request.getParameter("t3"));
+    	int inputDay= Integer.parseInt(request.getParameter("t1"));
+    	int inputMonth= Integer.parseInt(request.getParameter("t2"));
+    	int inputYear= Integer.parseInt(request.getParameter("t3"));
     	
-    	String ss=java.time.LocalDate.now().toString();  
-    	String dateParts[] = ss.split("-");
+    	String currentTime=java.time.LocalDate.now().toString();  
+    	String dateParts[] = currentTime.split("-");
     	int  year  = Integer.parseInt(dateParts[0]);
     	int month  = Integer.parseInt(dateParts[1]);
     	int day = Integer.parseInt(dateParts[2]);
 
-    	mv.addObject("result",findAge(day, month, year, a, b, c));
+    	mv.addObject("result",findAge(day, month, year, inputDay, inputMonth, inputYear));
     	mv.setViewName("add-result");
     	return mv;
     }

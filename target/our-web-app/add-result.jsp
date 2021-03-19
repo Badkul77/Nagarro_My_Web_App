@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Age Calculator</title>
 </head>
 <body>
-The result is rendered here :<br>
+ <h1 style="text-align:center">Age Calculator</h1>
+  <p style="text-align:center">Your Age will  rendered here :</p><br>
 
-result :<%= request.getAttribute("result") %>
+<p style="text-align:center">Your Current age is :<%= request.getAttribute("result") %></p>
 </body>
 </html>
