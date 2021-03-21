@@ -51,4 +51,12 @@ return ss;
     	mv.setViewName("add-result");
     	return mv;
     }
+	 public static void main(String[] args)
+	    {
+	        System.out.println(new AdditionController().greet("world"));
+	    }
+
+	    public String greet(String name) {
+	        return "Hello " + name;
+	    }
 }
