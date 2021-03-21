@@ -31,21 +31,24 @@ pipeline {
           }
 
       }
-      stage("Deploy") {
-          steps {
-            git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'  
-            bat "mvn  clean install"
-            
+      stage("Artifactory") 
+          {
+           steps
+           {   
+              rtMavenDeployer (
+                 id: 'deployer',
+                 serverId: 'My_Artifactory',
+                 releaseRepo: 'example-repo-local',
+                 snapshotRepo: 'example-repo-local')
+             rtMavenRun (
+                pom: 'pom.xml',
+                goals: 'clean install',
+                deployerId: 'deployer')
+             rtPublishBuildInfo(
+              serverId: 'My_Artifactory')
+
+           }
           }
-          post {
-              success {
-                  archiveArtifacts 'target/*.war'
-              }
-
-          }
-
-
-      }
 
       }
    }
