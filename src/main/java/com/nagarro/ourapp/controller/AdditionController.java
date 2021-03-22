@@ -9,7 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AdditionController {
-	 String findAge(int current_date, int current_month, 
+	boolean valid=false;
+	public String findAge(int current_date, int current_month, 
             int current_year, int birth_date, 
             int birth_month, int birth_year) 
 { 
@@ -59,4 +60,10 @@ return ss;
 	    public String greet(String name) {
 	        return "Hello " + name;
 	    }
+	    public boolean isValid() {
+	    	// if application start succesfull
+	    	valid=true;
+	        return valid;
+	    }
+	    
 }
