@@ -8,10 +8,14 @@ pipeline {
    }
 
    stages {
+    stage('Checkout') {
+         steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Badkul77/Nagarro_My_Web_App.git']]])
+         }
+         }
       stage('Build') {
          steps {
-            // Get some code from a GitHub repository 
-            git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'
+         
             bat"mvn clean compile"
          }
          }
@@ -25,7 +29,7 @@ pipeline {
          }
       stage("Test") {
           steps {
-            git 'https://github.com/Badkul77/Nagarro_My_Web_App.git'  
+       
             bat "mvn  clean test"
             
           }
