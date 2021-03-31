@@ -1,4 +1,5 @@
-FROM openjdk:8-nanoserver
-EXPOSE 8084
-ADD target/our-web-app.war our-web-app.jar
-ENTRYPOINT ["java","-jar","/our-web-app.jar"]
+FROM tomcat:latest
+LABEL maintainer="Naman Badkul"
+COPY target/our-web-app.war /usr/local/tomcat/webapps/
+EXPOSE 8090
+CMD ["catalina.sh", "run"]
