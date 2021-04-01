@@ -6,7 +6,13 @@ pipeline {
       maven "Maven 3"
       jdk "Java"
    }
-
+   environment {
+        //once you sign up for Docker hub, use that user_id here
+        registry = "badkulnaman/mywebapp:Tomcat"
+        //- update your credentials ID after creating credentials for connecting to Docker Hub
+        registryCredential = '05801a91-f5d9-442b-9cfc-eaeaac804563'
+        dockerImage = ''
+    }
    stages {
     stage('Checkout') {
          steps {
@@ -53,6 +59,28 @@ pipeline {
 
            }
           }
-
+      stage('Building image') {
+       steps{
+        script {
+          dockerImage = docker.build registry
+        }
+      }
+    }
+	 stage('Upload Image') {
+     steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+        }
+      }
+    }
+    stage('Docker Run') {
+     steps{
+         script {
+            dockerImage.run("-p 8090:8080 --rm --name mywebapp")
+         }
+      }
+    }
       }
    }
