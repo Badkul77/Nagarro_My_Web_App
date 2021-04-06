@@ -7,6 +7,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>our-web-app Maven Webapp</name>
   <url>http://maven.apache.org</url>
+<properties>
+    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>8</maven.compiler.target>
+</properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -42,20 +46,5 @@
   </dependencies>
   <build>
     <finalName>our-web-app</finalName>
-    <plugins>
-<plugin>
-            <!-- Build an executable JAR -->
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.0</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>com.nagarro.ourapp.controller.AdditionController</mainClass>
-                    </manifest>
-                </archive>
-            </configuration>
-        </plugin>
-    </plugins>
   </build>
 </project>
